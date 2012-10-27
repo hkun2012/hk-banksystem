@@ -235,8 +235,10 @@ public class BMSystemMain {
 		System.out.println(s);
 	}
 	
+	/*
 	public static void main(String[] args) {
 		BMSystemMain sy = new BMSystemMain();
 		sy.mainMenu();
 	}
+	*/
 }
