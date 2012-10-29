@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import com.hk.BMSystemBusiness.UserBusiness;
-import com.hk.user.User;
+import com.hk.model.User;
 
 public class BMSystemLogInPage implements ActionListener {
 

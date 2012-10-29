@@ -1,0 +1,6 @@
+package com.hk.model;
+
+public class BankCustomer {
+	String mIdentityNumber;
+	ArrayList<String> mCardList;
+}

@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 import javax.lang.model.element.NestingKind;
 
+import com.hk.model.User;
 import com.hk.tool.Gender;
 import com.hk.tool.IDGenerator;
 import com.hk.tool.UserRight;
-import com.hk.user.User;
 
 public class UserBusiness {
 private  ArrayList<User> allUsers;
@@ -43,9 +43,7 @@ private  ArrayList<User> allUsers;
 					controllerCount++;		continue;
 				}
 			}
-			System.out.println("" + allUsers.size() + " " + frontCount);
-			User user = allUsers.get(1);
-			System.out.println(user.toString());
+			System.out.println("userSize: " + allUsers.size() + "  frontSize: " + frontCount);
 			IDGenerator.initialize(frontCount, managerCount, controllerCount);
 		} catch (FileNotFoundException e) {
 			System.out.println("file not found!");

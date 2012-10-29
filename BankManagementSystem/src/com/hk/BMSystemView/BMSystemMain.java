@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import com.hk.BMSystemBusiness.UserBusiness;
+import com.hk.model.User;
 import com.hk.tool.Gender;
 import com.hk.tool.UserRight;
-import com.hk.user.User;
 
 public class BMSystemMain {
 	private UserBusiness userBusiness;

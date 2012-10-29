@@ -1,16 +1,3 @@
 INDEX VERSION 1.126+D:\source\hk-banksystem\.metadata\.plugins\org.eclipse.jdt.core
-1999160067.index
-716757045.index
-720984427.index
-2001448616.index
-614808055.index
-4271851601.index
-698518819.index
-2450863650.index
-2348637814.index
-2880395010.index
-560545320.index
-3659521563.index
-2859814894.index
-363291260.index
-2967717422.index
+398997195.index
+730457560.index

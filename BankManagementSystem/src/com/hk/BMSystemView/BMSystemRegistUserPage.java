@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import com.hk.BMSystemBusiness.UserBusiness;
-import com.hk.user.User;
+import com.hk.model.User;
 
 public class BMSystemRegistUserPage extends JFrame implements ActionListener {
 
