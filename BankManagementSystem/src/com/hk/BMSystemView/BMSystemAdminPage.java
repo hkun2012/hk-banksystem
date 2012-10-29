@@ -34,6 +34,7 @@ public class BMSystemAdminPage extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public BMSystemAdminPage(JFrame mainFrame, UserBusiness userBusiness) {
+		setResizable(false);
 		mUserBusiness = userBusiness;
 		mMainFrame = mainFrame;
 		
@@ -74,7 +75,7 @@ public class BMSystemAdminPage extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == mRegistUserButton) {
 			this.setVisible(false);
-			mRegistPage = new BMSystemRegistUserPage(mMainFrame, mUserBusiness);
+			mRegistPage = new BMSystemRegistUserPage(this, mUserBusiness);
 			mRegistPage.setVisible(true);
 			
 		} else if (e.getSource() == mModifyUserButton) {
@@ -88,7 +89,8 @@ public class BMSystemAdminPage extends JFrame implements ActionListener {
 			mDeletePage.setVisible(true);
 			
 		} else if (e.getSource() == mReturnMainPageButton){
-			
+			this.setVisible(false);
+			mMainFrame.setVisible(true);
 		}
 		
 	}

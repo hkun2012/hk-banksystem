@@ -15,7 +15,6 @@ public class BMSystemMain {
 	
 	public BMSystemMain() {
 		userBusiness = new UserBusiness();
-		userBusiness.initialize();
 		print("Welcome to The HK Bank Management System!");
 	}
 	

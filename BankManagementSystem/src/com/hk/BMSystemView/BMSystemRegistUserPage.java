@@ -29,9 +29,8 @@ public class BMSystemRegistUserPage extends JFrame implements ActionListener {
 	 * 
 	 */
 	private UserBusiness mUserBusiness;
-	private JFrame mMainFrame;
+	private JFrame mAdminFrame;
 	
-	private static final long serialVersionUID = 3750171553731845788L;
 	private JPanel contentPane;
 	private JTextField mAccountTextField;
 	private JTextField mUserNameTextField;
@@ -51,9 +50,10 @@ public class BMSystemRegistUserPage extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public BMSystemRegistUserPage(JFrame mainFrame, UserBusiness userBusiness) {
+	public BMSystemRegistUserPage(JFrame adminFrame, UserBusiness userBusiness) {
+		setResizable(false);
 		mUserBusiness = userBusiness;
-		mMainFrame = mainFrame;
+		mAdminFrame = adminFrame;
 		
 		setTitle("用户注册");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -171,10 +171,11 @@ public class BMSystemRegistUserPage extends JFrame implements ActionListener {
 			String password = String.valueOf(mPasswordField.getPassword());
 			String comfirmPassword = String.valueOf(mComfirmPasswordField.getPassword());
 			int choice = WhichTypeSelected();
+			int gender = whichGenderSelected();
 			
 			if (password.length() == 0 || comfirmPassword.length() == 0
 					|| mUserNameTextField.getText().equals("") || mAgeTextField.getText().equals("")
-					|| choice == 0 || !IsGenderSelected()) {
+					|| choice == 0 || gender == 3) {
 				JOptionPane.showMessageDialog(this, "各项信息不能为空!");
 				return;
 			}
@@ -186,23 +187,28 @@ public class BMSystemRegistUserPage extends JFrame implements ActionListener {
 			}
 			
 			User newUser = mUserBusiness.registUser(choice, comfirmPassword);
+			mUserBusiness.modifyUserInfo(newUser, mUserNameTextField.getText(), mAgeTextField.getText()
+					, choice, gender);
+			
 			if (newUser == null) {
 				reset();
 				JOptionPane.showMessageDialog(this, "注册失败，请重试！");
 				return;
 			}
 			
-			JOptionPane.showMessageDialog(this, "注册成功，请牢记您的账号和密码！");
+			JOptionPane.showMessageDialog(this, "您的账号为: " + newUser.getUserId());
 			mAccountTextField.setText(newUser.getUserId());
-			mMainFrame.setVisible(true);
-			this.setEnabled(false);
+			mAdminFrame.setVisible(true);
+			this.dispose();
 		}
 	}
 	
-	private boolean IsGenderSelected() {
-		if (mMaleRadioButton.isSelected() || mFemaleRadioButton.isSelected())
-			return true;
-		return false;
+	private int whichGenderSelected() {
+		if (mMaleRadioButton.isSelected())
+			return 1;
+		if (mFemaleRadioButton.isSelected())
+			return 2;
+		return 3;
 	}
 	
 	private int WhichTypeSelected() {

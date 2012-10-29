@@ -1,9 +1,15 @@
 package com.hk.user;
 
+import java.io.Serializable;
+
 import com.hk.tool.Gender;
 import com.hk.tool.UserRight;
 
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2822684814134293283L;
 	private String userId;
 	private String password;
 	private String userName;
@@ -31,10 +37,6 @@ public class User {
 	public boolean matchPassword(String pd) {
 		return this.password.equals(pd);
 	}
-	
-	public String toString() {
-		return new String(userId);
-	}
 
 	public boolean isAdmin() {
 		return this.userRight == UserRight.ADMIN;
@@ -60,5 +62,32 @@ public class User {
 
 	public String getUserGender() {
 		return String.valueOf(this.gender);
+	}
+	
+	public UserRight getUserRight() {
+		return this.userRight;
+	}
+	
+	public String toString() {
+		return this.userId + "  " + this.password + "  " 
+				+ this.userName + "  " + this.age + "  " 
+				+ this.gender + this.userRight; 
+	}
+
+	public void modifyInfo(String userName2, String age2, int choice,
+			int gender2) {
+		userName = userName2;
+		age = Integer.valueOf(age2);
+		if (choice == 1)
+			userRight = UserRight.FRONT;
+		else if (choice == 2)
+			userRight = UserRight.MANAGER;
+		else if (choice  == 3)
+			userRight = UserRight.CONTROLLER;
+		
+		if (gender2 == 1)
+			gender = Gender.MALE;
+		if (gender2 == 2)
+			gender = Gender.FEMALE;
 	}
 }
